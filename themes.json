@@ -1,0 +1,34 @@
+{
+    "red": {
+        "slug": "osclassclsx_red", 
+        "color": {
+            "main": "#EB6056",
+            "text": "#fff",
+            "darken": "20%"
+        }
+    },
+    "blue": {
+        "slug": "bender",
+        "color": {
+            "main": "#35C3D9",
+            "text": "#fff",
+            "darken": "5%"
+        }
+    },
+    "black": {
+        "slug": "osclassclsx_black",
+        "color": {
+            "main": "#000000",
+            "text": "#FFF",
+            "darken": "20%"
+        }
+    },
+    "purple": {
+        "slug": "osclassclsx_purple",
+        "color": {
+            "main": "#C00058",
+            "text": "#FFF",
+            "darken": "20%"
+        }
+    }
+}
