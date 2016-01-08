@@ -19,12 +19,15 @@
      * License along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
+<!doctype html>
+<html class="no-js" lang="<?php echo str_replace('_', '-', osc_current_user_locale()); ?>">
     <head>
-        <?php osc_current_web_theme_path('common/head.php') ; ?>
+        <?php osc_current_web_theme_path('includes/head.php') ; ?>
     </head>
 <body <?php osclassclsx_body_class(); ?>>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 <div id="header">
     <!-- header ad 728x60-->
     <div class="ads_header">

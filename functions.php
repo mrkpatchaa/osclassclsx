@@ -24,7 +24,7 @@
 DEFINES
 
 */
-    define('BENDER_THEME_VERSION', '310');
+    define('OSCLASSCLSX_THEME_VERSION', '100');
     if( (string)osc_get_preference('keyword_placeholder', 'osclassclsx')=="" ) {
         Params::setParam('keyword_placeholder', __('ie. PHP Programmer', 'osclassclsx') ) ;
     }
@@ -37,7 +37,7 @@ DEFINES
     osc_enqueue_script('php-date');
     if(!OC_ADMIN) {
         osc_enqueue_style('fine-uploader-css', osc_assets_url('js/fineuploader/fineuploader.css'));
-        osc_enqueue_style('bender-fine-uploader-css', osc_current_web_theme_url('css/ajax-uploader.css'));
+        osc_enqueue_style('osclassclsx-fine-uploader-css', osc_current_web_theme_url('css/ajax-uploader.css'));
     }
     osc_enqueue_script('jquery-fineuploader');
 
@@ -52,7 +52,7 @@ FUNCTIONS
     if( !function_exists('osclassclsx_theme_install') ) {
         function osclassclsx_theme_install() {
             osc_set_preference('keyword_placeholder', Params::getParam('keyword_placeholder'), 'osclassclsx');
-            osc_set_preference('version', BENDER_THEME_VERSION, 'osclassclsx');
+            osc_set_preference('version', OSCLASSCLSX_THEME_VERSION, 'osclassclsx');
             osc_set_preference('footer_link', '1', 'osclassclsx');
             osc_set_preference('donation', '0', 'osclassclsx');
             osc_set_preference('defaultShowAs@all', 'list', 'osclassclsx');
@@ -71,7 +71,7 @@ FUNCTIONS
 
             $logo_prefence = osc_get_preference('logo', 'osclassclsx');
             $logo_name     = 'osclassclsx_logo';
-            $temp_name     = WebThemes::newInstance()->getCurrentThemePath() . 'images/logo.jpg';
+            $temp_name     = WebThemes::newInstance()->getCurrentThemePath() . 'dist/images/logo.jpg';
             if( file_exists( $temp_name ) && !$logo_prefence) {
 
                 $img = ImageResizer::fromFile($temp_name);
@@ -96,7 +96,7 @@ FUNCTIONS
             //check if current version is installed or need an update<
             if( $current_version=='' ) {
                 osclassclsx_theme_update(0);
-            } else if($current_version < BENDER_THEME_VERSION){
+            } else if($current_version < OSCLASSCLSX_THEME_VERSION){
                 osclassclsx_theme_update($current_version);
             }
         }
@@ -104,8 +104,8 @@ FUNCTIONS
 
     if(!function_exists('osclassclsx_add_body_class_construct')) {
         function osclassclsx_add_body_class_construct($classes){
-            $benderBodyClass = benderBodyClass::newInstance();
-            $classes = array_merge($classes, $benderBodyClass->get());
+            $osclassclsxBodyClass = osclassclsxBodyClass::newInstance();
+            $classes = array_merge($classes, $osclassclsxBodyClass->get());
             return $classes;
         }
     }
@@ -133,8 +133,8 @@ FUNCTIONS
             *
             * @param string $class required parameter.
             */
-            $benderBodyClass = benderBodyClass::newInstance();
-            $benderBodyClass->add($class);
+            $osclassclsxBodyClass = osclassclsxBodyClass::newInstance();
+            $osclassclsxBodyClass->add($class);
         }
     }
     if(!function_exists('osclassclsx_nofollow_construct')) {
@@ -479,9 +479,9 @@ FUNCTIONS
                 View::newInstance()->_exportVariableToView('user', $user);
                 ?>
 <script type="text/javascript">
-    bender.user = {};
-    bender.user.id = '<?php echo osc_user_id(); ?>';
-    bender.user.secret = '<?php echo osc_user_field("s_secret"); ?>';
+    osclassclsx.user = {};
+    osclassclsx.user.id = '<?php echo osc_user_id(); ?>';
+    osclassclsx.user.secret = '<?php echo osc_user_field("s_secret"); ?>';
 </script>
             <?php }
         }
@@ -565,9 +565,9 @@ FUNCTIONS
 
     osc_add_hook('init', 'osclassclsx_redirect_user_dashboard', 2);
     osc_add_hook('init_admin', 'theme_osclassclsx_actions_admin');
-    osc_add_hook('theme_delete_bender', 'osclassclsx_delete');
-    osc_admin_menu_appearance(__('Header logo', 'osclassclsx'), osc_admin_render_theme_url('oc-content/themes/osclassclsx/admin/header.php'), 'header_bender');
-    osc_admin_menu_appearance(__('Theme settings', 'osclassclsx'), osc_admin_render_theme_url('oc-content/themes/osclassclsx/admin/settings.php'), 'settings_bender');
+    osc_add_hook('theme_delete_osclassclsx', 'osclassclsx_delete');
+    osc_admin_menu_appearance(__('Header logo', 'osclassclsx'), osc_admin_render_theme_url('oc-content/themes/osclassclsx/admin/header.php'), 'header_osclassclsx');
+    osc_admin_menu_appearance(__('Theme settings', 'osclassclsx'), osc_admin_render_theme_url('oc-content/themes/osclassclsx/admin/settings.php'), 'settings_osclassclsx');
 /**
 
 TRIGGER FUNCTIONS
@@ -668,7 +668,7 @@ function osclassclsx_print_sidebar_category_search($aCategories, $current_catego
 CLASSES
 
 */
-class benderBodyClass
+class osclassclsxBodyClass
 {
     /**
     * Custom Class for add, remove or get body classes.

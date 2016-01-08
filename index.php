@@ -21,7 +21,7 @@
 
 /*
 Theme Name: OSClass ClassifiedsX Theme
-Theme URI: http://krm.im/
+Theme URI: https://github.com/kraymond70/osclassclsx
 Description: OSClass ClassifiedsX Theme
 Version: 1.0.0
 Author: Raymond Médédé KPATCHAA

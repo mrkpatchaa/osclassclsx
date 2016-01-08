@@ -126,7 +126,7 @@ ul.r-list li ul{
 ul.r-list li.active h1,
 ul.r-list li.active a{
     $darkenColor:darken($maincolor, 10% );
-    @include contrasted($maincolor);
+    // @include contrasted($maincolor);
     border-color:$darkenColor;
     $color: $text-color-contrasted;
     text-shadow:0 1px 1px $darkenColor;

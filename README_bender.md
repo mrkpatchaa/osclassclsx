@@ -36,4 +36,4 @@ $> grunt dist
 
 It generates a `.zip` file per color scheme: blue (default), red, black and purple. The `index.php` and `colors.scss` are generated from the variables in `themes.json`. The screenshots are taken from `screenshot/{color scheme}/screenshot.png`.
 
-![Bender](http://pool.theinfosphere.org/images/1/14/Bender_promo_2.jpg)
+![Bender](http://pool.theinfosphere.org/dist/images/1/14/Bender_promo_2.jpg)

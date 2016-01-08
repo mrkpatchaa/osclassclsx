@@ -1,0 +1,30 @@
+{
+  "name": "osclassclsx",
+  "homepage": "https://github.com/kraymond70/osclassclsx",
+  "authors": [
+    "Raymond Médédé KPATCHAA <kraymond70@gmail.com>"
+  ],
+  "description": "OSClass ClassifiedsX Theme",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "osclass"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "foundation-sites": "~6.1.1",
+    "motion-ui": "~1.1.1",
+    "foundation-font-awesome-buttons": "~3.0.1",
+    "bourbon": "~4.2.6"
+  }
+}
