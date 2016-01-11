@@ -26,11 +26,14 @@
         'cancel' => __('Cancel', 'osclassclsx')
     );
 
+    osc_register_script('jquery', osc_current_web_theme_url('assets/js/jquery.js'));
     osc_enqueue_script('jquery');
-    osc_enqueue_script('jquery-ui');
-    osc_register_script('global-theme-js', osc_current_web_theme_js_url('global.js'), 'jquery');
-    osc_register_script('delete-user-js', osc_current_web_theme_js_url('delete_user.js'), 'jquery-ui');
-    osc_enqueue_script('global-theme-js');
+    // osc_enqueue_script('jquery-ui');
+    osc_register_script('foundation-js', osc_current_web_theme_url('assets/js/foundation.js'));
+    osc_enqueue_script('foundation-js');
+    osc_register_script('main-theme-js', osc_current_web_theme_url('assets/js/main.js'), 'jquery');
+    osc_register_script('delete-user-js', osc_current_web_theme_url('assets/js/delete_user.js'), 'jquery');
+    osc_enqueue_script('main-theme-js');
 ?>
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -62,7 +65,9 @@
 <link rel="apple-touch-icon-precomposed" href="<?php echo osc_current_web_theme_url('favicon/favicon-57.png'); ?>">
 <!-- /favicon -->
 
-<link href="<?php echo osc_current_web_theme_url('js/jquery-ui/jquery-ui-1.10.2.custom.min.css') ; ?>" rel="stylesheet" type="text/css" />
+<?php /*<link href="<?php echo osc_current_web_theme_url('js/jquery-ui/jquery-ui-1.10.2.custom.min.css') ; ?>" rel="stylesheet" type="text/css" /> */ ?>
+
+<link href="<?php echo osc_current_web_theme_url('assets/css/main.css') ; ?>" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
     var bender = window.bender || {};
@@ -72,7 +77,9 @@
     bender.fancybox_next = '<?php echo osc_esc_js( __('Next image','osclassclsx')) ?>';
     bender.fancybox_closeBtn = '<?php echo osc_esc_js( __('Close','osclassclsx')) ?>';
 </script>
-<link href="<?php echo osc_current_web_theme_url('dist/css/main.css') ; ?>" rel="stylesheet" type="text/css" />
+
+<?php osc_run_hook('header') ; ?>
+
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
@@ -83,5 +90,3 @@
     r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
-
-<?php osc_run_hook('header') ; ?>

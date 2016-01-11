@@ -5,7 +5,7 @@ node_modules
 .sass-cache
 
 # .gitkeep
-dist/*
+assets/*
 packages/*
 
 # Bower

@@ -22,7 +22,7 @@
     // meta tag robots
     osc_add_hook('header','osclassclsx_nofollow_construct');
 
-    osc_enqueue_script('jquery-validate');
+    // osc_enqueue_script('jquery-validate');
     osclassclsx_add_body_class('item item-post');
     $action = 'item_add_post';
     $edit = false;

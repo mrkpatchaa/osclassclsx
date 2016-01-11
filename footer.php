@@ -26,8 +26,8 @@
 <!-- footer -->
 <div class="clear"></div>
 <?php osc_show_widgets('footer');?>
-<div id="footer">
-    <div class="wrapper">
+<footer id="footer">
+    <div class="row wrapper">
         <ul class="resp-toggle">
             <?php if( osc_users_enabled() ) { ?>
             <?php if( osc_is_web_user_logged_in() ) { ?>
@@ -79,6 +79,6 @@
             <?php } ?>
         <?php } ?>
     </div>
-</div>
+</footer>
 <?php osc_run_hook('footer'); ?>
 </body></html>

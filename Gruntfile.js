@@ -66,11 +66,11 @@ module.exports = function(grunt) {
                         'css/**',
                         'favicon/**',
                         'fonts/**',
-                        'dist/images/**',
+                        'assets/images/**',
                         'js/**',
                         'languages/**'
                     ],
-                    dest: 'dist/' + theme.slug
+                    dest: 'assets/' + theme.slug
                 }
             ]
         });
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
                     src: [
                         'screenshot/' + key + '/screenshot.png'
                     ],
-                    dest: 'dist/' + theme.slug + '/screenshot.png'
+                    dest: 'assets/' + theme.slug + '/screenshot.png'
                 }
             ]
         });
@@ -90,10 +90,10 @@ module.exports = function(grunt) {
         // replace theme strings
         grunt.config( 'replace.'+ key , {
             src: [
-                'dist/' + theme.slug + '/*.php',
-                'dist/' + theme.slug + '/admin/*.php',
-                'dist/' + theme.slug + '/common/*.php',
-                'dist/' + theme.slug + '/js/*.js'
+                'assets/' + theme.slug + '/*.php',
+                'assets/' + theme.slug + '/admin/*.php',
+                'assets/' + theme.slug + '/common/*.php',
+                'assets/' + theme.slug + '/js/*.js'
             ],
             overwrite: true,
             replacements: [
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
 
         var archive = '../packages/theme_'+ theme.slug + '_' + pkg.version + '.zip';
         grunt.config( 'shell.compress_'+ key , {
-            command : 'cd dist/; zip -r ' + archive + ' ' + theme.slug + '/;',
+            command : 'cd assets/; zip -r ' + archive + ' ' + theme.slug + '/;',
             options: {
                 stdout: false
             }

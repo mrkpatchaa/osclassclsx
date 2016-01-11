@@ -21,10 +21,14 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "foundation-sites": "~6.1.1",
     "motion-ui": "~1.1.1",
     "foundation-font-awesome-buttons": "~3.0.1",
-    "bourbon": "~4.2.6"
+    "bourbon": "~4.2.6",
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.2.0",
+    "jQuery-switchButton": "git@github.com:olance/jQuery-switchButton.git"
   }
 }

@@ -22,7 +22,7 @@
     // meta tag robots
     osc_add_hook('header','osclassclsx_nofollow_construct');
 
-    osc_enqueue_script('jquery-validate');
+    // osc_enqueue_script('jquery-validate');
     osclassclsx_add_body_class('contact');
     osc_current_web_theme_path('header.php');
 ?>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </form>
-        <?php SendFriendForm::js_validation(); ?>
+        <?php //SendFriendForm::js_validation(); ?>
     </div>
 </div>
 <?php osc_current_web_theme_path('footer.php'); ?>

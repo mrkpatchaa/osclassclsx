@@ -28,45 +28,58 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-<div id="header">
+<header id="header">
+    <div class="row wrapper">
+        <div class="top-bar columns">
+            <div class="top-bar-left">
+                <div id="logo">
+                    <?php echo logo_header(); ?>
+                    <span id="description"><?php echo osc_page_description(); ?></span>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <!-- <li class="has-submenu">
+                        <a href="#">One</a>
+                        <ul class="submenu menu vertical" data-submenu>
+                            <li><a href="#">One</a></li>
+                            <li><a href="#">Two</a></li>
+                            <li><a href="#">Three</a></li>
+                        </ul>
+                    </li> -->
+                    <?php if( osc_is_static_page() || osc_is_contact_page() ){ ?>
+                        <li class="search"><a class="ico-search icons" data-bclass-toggle="display-search"></a></li>
+                        <li class="cat"><a class="ico-menu icons" data-bclass-toggle="display-cat"></a></li>
+                    <?php } ?>
+                    <?php if( osc_users_enabled() ) { ?>
+                    <?php if( osc_is_web_user_logged_in() ) { ?>
+                        <li class="first logged">
+                            <span><?php echo sprintf(__('Hi %s', 'osclassclsx'), osc_logged_user_name() . '!'); ?>  &middot;</span>
+                            <strong><a href="<?php echo osc_user_dashboard_url(); ?>"><?php _e('My account', 'osclassclsx'); ?></a></strong> &middot;
+                            <a href="<?php echo osc_user_logout_url(); ?>"><?php _e('Logout', 'osclassclsx'); ?></a>
+                        </li>
+                    <?php } else { ?>
+                        <li><a id="login_open" href="<?php echo osc_user_login_url(); ?>"><?php _e('Login', 'osclassclsx') ; ?></a></li>
+                        <?php if(osc_user_registration_enabled()) { ?>
+                            <li><a href="<?php echo osc_register_account_url() ; ?>"><?php _e('Register for a free account', 'osclassclsx'); ?></a></li>
+                        <?php }; ?>
+                    <?php } ?>
+                    <?php } ?>
+                    <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
+                    <li class="publish"><a href="<?php echo osc_item_post_url_in_category() ; ?>" class="alert button uppercase bold"><?php _e("Publish your ad for free", 'osclassclsx');?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
     <!-- header ad 728x60-->
-    <div class="ads_header">
+    <div class="ads_header row">
     <?php echo osc_get_preference('header-728x90', 'osclassclsx'); ?>
     <!-- /header ad 728x60-->
     </div>
-    <div class="clear"></div>
-    <div class="wrapper">
-        <div id="logo">
-            <?php echo logo_header(); ?>
-            <span id="description"><?php echo osc_page_description(); ?></span>
-        </div>
-        <ul class="nav">
-            <?php if( osc_is_static_page() || osc_is_contact_page() ){ ?>
-                <li class="search"><a class="ico-search icons" data-bclass-toggle="display-search"></a></li>
-                <li class="cat"><a class="ico-menu icons" data-bclass-toggle="display-cat"></a></li>
-            <?php } ?>
-            <?php if( osc_users_enabled() ) { ?>
-            <?php if( osc_is_web_user_logged_in() ) { ?>
-                <li class="first logged">
-                    <span><?php echo sprintf(__('Hi %s', 'osclassclsx'), osc_logged_user_name() . '!'); ?>  &middot;</span>
-                    <strong><a href="<?php echo osc_user_dashboard_url(); ?>"><?php _e('My account', 'osclassclsx'); ?></a></strong> &middot;
-                    <a href="<?php echo osc_user_logout_url(); ?>"><?php _e('Logout', 'osclassclsx'); ?></a>
-                </li>
-            <?php } else { ?>
-                <li><a id="login_open" href="<?php echo osc_user_login_url(); ?>"><?php _e('Login', 'osclassclsx') ; ?></a></li>
-                <?php if(osc_user_registration_enabled()) { ?>
-                    <li><a href="<?php echo osc_register_account_url() ; ?>"><?php _e('Register for a free account', 'osclassclsx'); ?></a></li>
-                <?php }; ?>
-            <?php } ?>
-            <?php } ?>
-            <?php if( osc_users_enabled() || ( !osc_users_enabled() && !osc_reg_user_post() )) { ?>
-            <li class="publish"><a href="<?php echo osc_item_post_url_in_category() ; ?>"><?php _e("Publish your ad for free", 'osclassclsx');?></a></li>
-            <?php } ?>
-        </ul>
-
-    </div>
-    <?php if( osc_is_home_page() || osc_is_static_page() || osc_is_contact_page() ) { ?>
-    <form action="<?php echo osc_base_url(true); ?>" method="get" class="search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*/ ?>>
+    <?php /*if( osc_is_home_page() || osc_is_static_page() || osc_is_contact_page() ) { ?>
+    <form action="<?php echo osc_base_url(true); ?>" method="get" class="search nocsrf" <?php /* onsubmit="javascript:return doSearch();"*//* ?>>
         <input type="hidden" name="page" value="search"/>
         <div class="main-search">
             <div class="cell">
@@ -85,16 +98,17 @@
         </div>
         <div id="message-seach"></div>
     </form>
-    <?php } ?>
-</div>
+    <?php }*/ ?>
+</header>
 <?php osc_show_widgets('header'); ?>
-<div class="wrapper wrapper-flash">
+<div class="row wrapper wrapper-flash">
     <?php
-        $breadcrumb = osc_breadcrumb('&raquo;', false, get_breadcrumb_lang());
+        $breadcrumb = osc_breadcrumb('', false, get_breadcrumb_lang());
         if( $breadcrumb !== '') { ?>
-        <div class="breadcrumb">
-            <?php echo $breadcrumb; ?>
-            <div class="clear"></div>
+        <div class="columns small-12">
+            <nav aria-label="You are here:" role="navigation">
+                <?php echo $breadcrumb; ?>
+            </nav>
         </div>
     <?php
         }
@@ -102,7 +116,5 @@
     <?php osc_show_flash_message(); ?>
 </div>
 <?php osc_run_hook('before-content'); ?>
-<div class="wrapper" id="content">
+<div class="row wrapper" id="content">
     <?php osc_run_hook('before-main'); ?>
-    <div id="main">
-        <?php osc_run_hook('inside-main'); ?>

@@ -20,11 +20,11 @@ critical    = require('critical')
 ;
 
 // See https://github.com/austinpray/asset-builder
-var manifest = require('asset-builder')('./assets/manifest.json');
+var manifest = require('asset-builder')('./_assets/manifest.json');
 
 // `path` - Paths to base asset directories. With trailing slashes.
 // - `path.source` - Path to the source files. Default: `assets/`
-// - `path.dist` - Path to the build directory. Default: `dist/`
+// - `path.dist` - Path to the build directory. Default: `assets/`
 var path = manifest.paths;
 // console.log(manifest.paths);
 
@@ -45,7 +45,7 @@ var config = manifest.config || {};
 // - `globs.bower` - Array of all the main Bower files.
 var globs = manifest.globs;
 // console.log(globs.js);
-// console.log(globs.css);
+// console.log(globs.bower);
 
 // `project` - paths to first-party assets.
 // - `project.js` - Array of first-party JS assets.
@@ -299,7 +299,7 @@ gulp.task('watch', function() {
     gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
     gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
     gulp.watch([path.source + 'images/**/*'], ['images']);
-    gulp.watch(['bower.json', './assets/manifest.json'], ['build']);
+    gulp.watch(['bower.json', './_assets/manifest.json'], ['build']);
 });
 
 // ### Build

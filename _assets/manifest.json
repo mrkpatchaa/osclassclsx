@@ -1,0 +1,69 @@
+{
+    "dependencies": {
+        "main.css": {
+            "files": [
+                "styles/main.scss"
+            ]
+        },
+        "admin.css": {
+            "files": [
+                "styles/admin.scss"
+            ]
+        },
+        "main.js": {
+            "files": [
+                "scripts/main.js"
+            ]
+        },
+        "admin.js": {
+            "files": [
+                "../bower_components/jQuery-switchButton/jquery.switchButton.js",
+                "scripts/admin.js"
+            ]
+        },
+        "foundation.js": {
+            "bower": ["foundation-sites", "motion-ui"]
+        },
+        "jquery.js": {
+            "bower": ["jquery"]
+        },
+        "delete_user.js": {
+            "files": [
+                "scripts/delete_user.js"
+            ]
+        },
+        "fonts": {
+            "files": [
+                "fonts/**/*",
+                "../bower_components/font-awesome/fonts/**"
+            ]
+        }
+    },
+    "config": {
+        "devUrl": "http://localhost/_learn/osclass/",
+        "browserSync": {
+            "watch": [
+                "**/*.php",
+                "_posts/*"
+            ],
+            "baseDir": "./_site",
+            "port": 3000
+        },
+        "jekyll": {
+            "watch": [
+                "{_includes,_layouts}/**/*.html",
+                "*.html",
+                "*.md",
+                "_posts/*"
+            ]
+        },
+        "sassPaths" :[
+            "bower_components/foundation-sites/scss",
+            "bower_components/motion-ui/src"
+        ]
+    },
+    "paths": {
+        "source": "_assets/",
+        "dist": "assets/"
+    }
+}

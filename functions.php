@@ -29,17 +29,17 @@ DEFINES
         Params::setParam('keyword_placeholder', __('ie. PHP Programmer', 'osclassclsx') ) ;
     }
     osc_register_script('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.pack.js'), array('jquery'));
-    osc_enqueue_style('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.css'));
-    osc_enqueue_script('fancybox');
+    // osc_enqueue_style('fancybox', osc_current_web_theme_url('js/fancybox/jquery.fancybox.css'));
+    // osc_enqueue_script('fancybox');
 
-    osc_enqueue_style('font-awesome', osc_current_web_theme_url('css/font-awesome-4.1.0/css/font-awesome.min.css'));
+    // osc_enqueue_style('font-awesome', osc_current_web_theme_url('css/font-awesome-4.1.0/css/font-awesome.min.css'));
     // used for date/dateinterval custom fields
     osc_enqueue_script('php-date');
     if(!OC_ADMIN) {
-        osc_enqueue_style('fine-uploader-css', osc_assets_url('js/fineuploader/fineuploader.css'));
-        osc_enqueue_style('osclassclsx-fine-uploader-css', osc_current_web_theme_url('css/ajax-uploader.css'));
+        // osc_enqueue_style('fine-uploader-css', osc_assets_url('js/fineuploader/fineuploader.css'));
+        // osc_enqueue_style('osclassclsx-fine-uploader-css', osc_current_web_theme_url('css/ajax-uploader.css'));
     }
-    osc_enqueue_script('jquery-fineuploader');
+    osc_register_script('jquery-fineuploader');
 
 
 /**
@@ -71,7 +71,7 @@ FUNCTIONS
 
             $logo_prefence = osc_get_preference('logo', 'osclassclsx');
             $logo_name     = 'osclassclsx_logo';
-            $temp_name     = WebThemes::newInstance()->getCurrentThemePath() . 'dist/images/logo.jpg';
+            $temp_name     = WebThemes::newInstance()->getCurrentThemePath() . 'assets/images/logo.jpg';
             if( file_exists( $temp_name ) && !$logo_prefence) {
 
                 $img = ImageResizer::fromFile($temp_name);
@@ -211,7 +211,7 @@ FUNCTIONS
         }
     }
     if( !function_exists('osclassclsx_draw_categories_list') ) {
-        function osclassclsx_draw_categories_list(){ ?>
+        function osclassclsx_draw_categories_list($all = false){ ?>
         <?php if(!osc_is_home_page()){ echo '<div class="resp-wrapper">'; } ?>
          <?php
          //cell_3
@@ -271,6 +271,51 @@ FUNCTIONS
             echo '</div>';
         ?>
         <?php if(!osc_is_home_page()){ echo '</div>'; } ?>
+        <?php
+        }
+    }
+    if( !function_exists('osclassclsx_draw_categories_list_home') ) {
+        function osclassclsx_draw_categories_list_home(){
+         //cell_3
+        $total_categories   = osc_count_categories();
+        // $col1_max_cat       = ceil($total_categories/3);
+        // $col1_max_cat = 3;
+    ?>
+        <div class="categories-list row">
+    <?php
+        osc_goto_first_category();
+        $i      = 0;
+
+        while ( osc_has_categories() ) {
+    ?>
+        <?php
+            if($i == 0) {
+               echo '<div class="columns small-4 first_cel">';
+            } else {
+                echo '<div class="columns small-4">';
+            }
+        ?>
+            <h1>
+                <?php
+                $_slug      = osc_category_slug();
+                $_url       = osc_search_category_url();
+                $_name      = osc_category_name();
+                $_total_items = osc_category_total_items();
+                ?>
+                <a class="category <?php echo $_slug; ?>" href="<?php echo $_url; ?>"><?php echo $_name ; ?></a> <span class="hide">(<?php echo $_total_items ; ?>)</span>
+            </h1>
+            <?php
+                if ( osc_count_subcategories() > 0 ) {
+                    while ( osc_has_subcategories() ) {
+                    }
+                }
+            ?>
+        <?php
+                echo '</div>';
+                $i++;
+            }
+        ?>
+        </div>
         <?php
         }
     }
@@ -575,7 +620,7 @@ TRIGGER FUNCTIONS
 */
 check_install_osclassclsx_theme();
 if(osc_is_home_page()){
-    osc_add_hook('inside-main','osclassclsx_draw_categories_list');
+    osc_add_hook('inside-main','osclassclsx_draw_categories_list_home');
 } else if( osc_is_static_page() || osc_is_contact_page() ){
     osc_add_hook('before-content','osclassclsx_draw_categories_list');
 }
@@ -746,5 +791,12 @@ if (!function_exists('search_ads_listing_medium_fn')) {
     }
 }
 osc_add_hook('search_ads_listing_medium', 'search_ads_listing_medium_fn');
+
+/**
+
+CUStOM FUNCTIONS
+
+*/
+require_once('includes/custom_functions.php');
 
 ?>
